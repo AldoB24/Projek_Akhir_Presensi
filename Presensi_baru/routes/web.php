@@ -6,13 +6,6 @@ use App\Http\Controllers\Login\RegisterController;
 use App\Http\Controllers\Login\ForgotPasswordController;
 use App\Http\Controllers\Login\LogoutController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DKController;
-use App\Http\Controllers\IzinController;
-use App\Http\Controllers\JKController;
-use App\Http\Controllers\RekapController;
-use App\Http\Controllers\TepatController;
-use App\Http\Controllers\TelatController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,14 +26,16 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/login', [LoginController::class, 'login']); //route post untuk login
-
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-//route beranda
+
+// Controller PADA Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/dk', [DKController::class, 'index']);
-Route::get('/izin', [IzinController::class, 'index']);
-Route::get('/jk', [JKController::class, 'index']);
-Route::get('/rekap', [RekapController::class, 'index']);
-Route::get('/tepat', [TepatController::class, 'index']);
-Route::get('/telat', [TelatController::class, 'index']);
+Route::get('/jumlah_karyawan', [DashboardController::class, 'jumlah']);
+Route::get('/tepat_waktu', [DashboardController::class, 'tepatwaktu']);
+Route::get('/terlambat', [DashboardController::class, 'terlambat']);
+Route::get('/izin', [DashboardController::class, 'izin']);
+Route::get('/rekap_absen', [DashboardController::class, 'rekap']);
+Route::get('/data_karyawan', [DashboardController::class, 'data']);
+Route::get('/settings', [DashboardController::class, 'setting']);
+
